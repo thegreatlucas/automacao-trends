@@ -226,9 +226,10 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
   <div class="portal-header">
     <div class="portal-label">✨ Portal de Tendências</div>
     <div class="portal-desc">Descreva o contexto da semana e a IA sugere conteúdo para cada seção do radar.</div>
-    <div class="portal-input-row">
+    <div class="portal-input-row" style="position:relative">
       <input class="portal-input" id="portal-ctx" placeholder="Ex: semana do dia das mães, lançamento iPhone, Copa do Mundo…">
       <button class="gen-btn" id="gen-btn" onclick="gerarSugestoes()">Gerar</button>
+      <button onclick="resetApiKey()" title="Trocar API key" style="background:transparent;border:1px solid #333;color:#666;border-radius:4px;padding:7px 8px;cursor:pointer;font-size:10px">🔑</button>
     </div>
   </div>
   <div class="portal-body" id="portal-body">
