@@ -695,24 +695,21 @@ async function gerarSugestoes() {
   ).join('');
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true',
+        'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'gpt-4o',
         max_tokens: 2000,
-        system: SYSTEM_PROMPT,
-        messages: [{
-          role: 'user',
-          content: `Contexto da semana: ${ctx}
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'user', content: `Contexto da semana: ${ctx}
 
-Gere sugestões relevantes para o Radar de Tendências JD Construção.`
-        }]
+Gere sugestões relevantes para o Radar de Tendências JD Construção.` }
+        ]
       })
     });
 
@@ -722,7 +719,7 @@ Gere sugestões relevantes para o Radar de Tendências JD Construção.`
     }
 
     const data = await res.json();
-    const text = data.content[0].text.trim();
+    const text = data.choices[0].message.content.trim();
 
     // Parse JSON (remover possíveis markdown fences)
     const clean = text.replace(/^```json?\n?/,'').replace(/\n?```$/,'');
