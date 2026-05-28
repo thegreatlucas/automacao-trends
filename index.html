@@ -523,7 +523,7 @@ function upd(){
 function sp(slide, x,y,w,h, fill, line=null){
   const o={x,y,w,h,fill:{type:'solid',color:fill},line:{width:0}};
   if(line) o.line={width:1,color:line};
-  slide.addShape(pptx.ShapeType.rect, o);
+  slide.addShape(window.pptxgen.ShapeType.rect, o);
 }
 function sep(slide, x,y,w){
   sp(slide, x,y,w,0.015, 'E5E7EB', '333333');
