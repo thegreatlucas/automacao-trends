@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radar JD – Gerador</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+<script src="https://unpkg.com/pptxgenjs@3.12.0/dist/pptxgen.bundle.js" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js'"></script>
 <style>
 :root{--g:#21521C;--y:#FFDE00;--bg:#0e0e0e;--panel:#161616;--bdr:#252525;--txt:#e8e8e8;--mut:#666}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -37,46 +37,65 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
 .s1-content{position:absolute;right:5%;top:50%;transform:translateY(-50%)}
 .s1-tag{font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;color:var(--y);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
 .s1-sub{font-size:16px;color:#fff;margin-top:5px}
-/* S2 */
-.s2{background:#f7f6f2;display:flex;flex-direction:column;padding:16px 20px 0;color:#0F172A;overflow:hidden}
-.s2-hdr{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:6px;border-bottom:1.5px solid #E5E7EB;margin-bottom:7px}
-.s2-pre{font-size:5.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#21521C;margin-bottom:2px}
-.s2-htitle{font-size:17px;font-weight:700;color:#0F172A;line-height:1.1}
-.s2-hr{text-align:right}
-.s2-rl{font-size:5.5px;color:#94A3B8;display:block}
-.s2-rv{font-size:10px;font-weight:700;color:#0F172A;display:block}
+/* S2 — fiel ao original */
+.s2{background:#f7f6f2;display:flex;flex-direction:column;padding:14px 22px 0;color:#0F172A;overflow:hidden;font-family:'Barlow',sans-serif}
+.s2-hdr{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:7px;border-bottom:1.5px solid #E5E7EB;margin-bottom:8px}
+.s2-pre{font-size:5.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#21521C;margin-bottom:3px}
+.s2-htitle{font-size:18px;font-weight:700;color:#0F172A;line-height:1.1}
+.s2-hr{text-align:right;flex-shrink:0}
+.s2-rl{font-size:5px;color:#94A3B8;display:block;letter-spacing:.08em}
+.s2-rv{font-size:11px;font-weight:700;color:#0F172A;display:block}
 .s2-rc{font-size:5px;color:#94A3B8;font-style:italic;display:block}
-.s2-body{flex:1;display:flex;flex-direction:column;gap:5px;overflow:hidden}
-.s2-dlbl{display:flex;align-items:center;gap:3px;font-size:5.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#333;margin-bottom:3px}
-.s2-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:4px}
-.s2-card{background:#F8FAFC;border:1px solid #E5E7EB;border-radius:2px;padding:6px;display:flex;gap:5px;align-items:flex-start}
-.s2-num{font-size:30px;font-weight:800;color:#21521C;line-height:1;flex-shrink:0}
+.s2-body{flex:1;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+/* destaques */
+.s2-dlbl{display:flex;align-items:center;gap:4px;font-size:5.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#333;margin-bottom:4px}
+.s2-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:5px}
+.s2-card{background:#F8FAFC;border:1px solid #E5E7EB;border-radius:2px;padding:7px 7px 6px;display:flex;align-items:stretch;gap:0;min-height:80px}
+.s2-num-wrap{display:flex;align-items:center;padding-right:8px;flex-shrink:0}
+.s2-num{font-size:38px;font-weight:800;color:#21521C;line-height:1}
+.s2-vline{width:1.5px;background:#000;align-self:stretch;margin-right:8px;flex-shrink:0}
+.s2-cbody{display:flex;flex-direction:column;justify-content:center}
 .s2-ct{font-size:7px;font-weight:700;color:#0F172A;margin-bottom:2px;line-height:1.3}
-.s2-cd{font-size:5.5px;color:#475569;line-height:1.4;margin-bottom:3px}
-.s2-icons{font-size:7px}
-.s2-sep{height:1.5px;background:#E5E7EB;border-top:1px solid #333;flex-shrink:0;margin:1px 0}
-.s2-mid{display:grid;grid-template-columns:1fr 1fr;gap:4px;flex:1;overflow:hidden}
-.s2-panel{background:#fff;border:1px solid #E5E7EB;border-radius:2px;padding:5px;overflow:hidden}
-.s2-ptitle{display:flex;align-items:center;gap:3px;font-size:6.5px;font-weight:700;color:#0F172A;padding-bottom:3px;border-bottom:1px solid #E5E7EB;margin-bottom:4px}
-.s2-fi{display:flex;gap:3px;align-items:flex-start;margin-bottom:4px}
-.s2-fn{font-size:6px;font-weight:700;color:#0F172A;line-height:1.3}
-.s2-fd{font-size:5px;color:#737373;line-height:1.3}
-.s2-ar{display:flex;justify-content:space-between;align-items:center;padding:2.5px 0;border-bottom:.5px solid #f0f0e8}
-.s2-at{font-size:6px;font-weight:700;color:#0F172A}
-.s2-ab{font-size:5px;color:#737373}
-.s2-au{font-size:5.5px;font-weight:700;color:#50A859}
+.s2-cd{font-size:5.5px;color:#475569;line-height:1.4;margin-bottom:4px}
+.s2-icons{font-size:7.5px;display:flex;gap:2px}
+/* separador */
+.s2-sep{height:1.5px;background:#E5E7EB;border-top:1px solid #333;flex-shrink:0}
+/* mid grid */
+.s2-mid{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1;min-height:0}
+.s2-panel{background:#fff;border:1px solid #E5E7EB;border-radius:2px;padding:6px 7px;overflow:hidden;display:flex;flex-direction:column}
+.s2-ptitle{display:flex;align-items:center;gap:4px;font-size:7px;font-weight:700;color:#0F172A;padding-bottom:4px;border-bottom:1px solid #E5E7EB;margin-bottom:5px;flex-shrink:0}
+/* formatos */
+.s2-fi{display:flex;gap:4px;align-items:flex-start;margin-bottom:5px}
+.s2-fi-arrow{color:#21521C;font-weight:700;font-size:7px;flex-shrink:0;margin-top:1px}
+.s2-fn{font-size:6.5px;font-weight:700;color:#0F172A;line-height:1.3}
+.s2-fd{font-size:5.5px;color:#737373;line-height:1.3;margin-top:1px}
+/* áudios */
+.s2-ar{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:.5px solid #f0f0e8}
+.s2-ar-l{display:flex;align-items:center;gap:4px}
+.s2-ar-ic{font-size:8px;color:#888}
+.s2-at{font-size:6.5px;font-weight:700;color:#0F172A;line-height:1.2}
+.s2-ab{font-size:5.5px;color:#737373}
+.s2-au{font-size:6px;font-weight:700;color:#50A859;white-space:nowrap}
+/* temas */
 .s2-tg{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.s2-tr{display:flex;justify-content:space-between;align-items:center;background:#F1F5F9;padding:2px 3px;border-radius:1px}
-.s2-tn{font-size:5.5px;color:#1E1B4B;font-weight:700}
-.s2-tv{font-size:5.5px;font-weight:700;color:#16A34A}
+.s2-tr{display:flex;justify-content:space-between;align-items:center;background:#F1F5F9;padding:3px 5px;border-radius:2px}
+.s2-tr-l{display:flex;align-items:center;gap:3px}
+.s2-tn{font-size:6px;color:#1E1B4B;font-weight:700}
+.s2-ti{font-size:7px;color:#16A34A}
+.s2-tv{font-size:6px;font-weight:700;color:#16A34A;text-align:right}
 .s2-tv.badge{color:#AA0000}
-.s2-ps{font-size:5.5px;font-weight:700;color:#0F172A;margin:2px 0}
-.s2-pi{font-size:5px;color:#737373;line-height:1.5}
-.s2-footer{background:#21521C;padding:6px 20px;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:8px;align-items:start;flex-shrink:0;margin:0 -20px}
-.s2-fl{font-size:5.5px;font-weight:700;color:rgba(255,255,255,.5);white-space:nowrap;line-height:1.5}
+/* plataformas */
+.s2-ps{font-size:6px;font-weight:700;color:#0F172A;margin:4px 0 2px;display:flex;align-items:center;gap:3px}
+.s2-pi{font-size:5.5px;color:#737373;line-height:1.6;padding-left:6px}
+.s2-pi::before{content:'– ';color:#aaa}
+/* footer */
+.s2-footer{background:#21521C;padding:7px 22px;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:10px;align-items:start;flex-shrink:0;margin:4px -22px 0}
+.s2-fl{font-size:5.5px;font-weight:700;color:rgba(255,255,255,.5);white-space:nowrap;line-height:1.6}
 .s2-fl span{display:block;color:#FADF4B}
-.s2-on{font-size:8px;font-weight:700;color:#FADF4B}
-.s2-ot{font-size:5px;color:rgba(255,255,255,.85);line-height:1.4;margin-top:1px}
+.s2-fvline{width:1px;background:rgba(255,255,255,.3);align-self:stretch}
+.s2-on{font-size:9px;font-weight:700;color:#FADF4B;line-height:1}
+.s2-ot{font-size:5.5px;color:rgba(255,255,255,.85);line-height:1.4;margin-top:2px}
+.s2-fcur{font-size:5px;color:rgba(255,255,255,.35);font-style:italic;grid-column:1/-1;margin-top:2px}
 /* S3 */
 .s3{background:#0d1f0d;display:flex;align-items:flex-start;justify-content:flex-end;padding:13% 7% 0 0}
 .s3-obr{font-family:'Barlow Condensed',sans-serif;font-size:76px;font-weight:800;color:#fff;text-transform:uppercase;line-height:.9;display:block}
@@ -265,42 +284,42 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
       <div>
         <div class="s2-dlbl">🔥 Destaques da Semana</div>
         <div class="s2-cards">
-          <div class="s2-card"><div class="s2-num">01</div><div><div class="s2-ct" id="pv-d1_titulo">Convocação para a Copa</div><div class="s2-cd" id="pv-d1_desc">Marcas fazem suas próprias convocações de produtos, utilizando tema da Copa.</div><div class="s2-icons">📷 🎵</div></div></div>
-          <div class="s2-card"><div class="s2-num">02</div><div><div class="s2-ct" id="pv-d2_titulo">Atualização Logo Spotify</div><div class="s2-cd" id="pv-d2_desc">Marcas estão adaptando suas logos para o mesmo estilo do Spotify, aproveitando o hype.</div><div class="s2-icons">📷 🎵</div></div></div>
-          <div class="s2-card"><div class="s2-num">03</div><div><div class="s2-ct" id="pv-d3_titulo">Lançamento Instants</div><div class="s2-cd" id="pv-d3_desc">Nova ferramenta gera onda de publicações utilizando o mesmo visual.</div><div class="s2-icons">📷 🎵</div></div></div>
+          <div class="s2-card"><div class="s2-num-wrap"><div class="s2-num">01</div></div><div class="s2-vline"></div><div class="s2-cbody"><div class="s2-ct" id="pv-d1_titulo">Convocação para a Copa</div><div class="s2-cd" id="pv-d1_desc">Marcas fazem suas próprias convocações de produtos, utilizando tema da Copa.</div><div class="s2-icons">📷 🎵</div></div></div>
+          <div class="s2-card"><div class="s2-num-wrap"><div class="s2-num">02</div></div><div class="s2-vline"></div><div class="s2-cbody"><div class="s2-ct" id="pv-d2_titulo">Atualização Logo Spotify</div><div class="s2-cd" id="pv-d2_desc">Marcas estão adaptando suas logos para o mesmo estilo do Spotify, aproveitando o hype.</div><div class="s2-icons">📷 🎵</div></div></div>
+          <div class="s2-card"><div class="s2-num-wrap"><div class="s2-num">03</div></div><div class="s2-vline"></div><div class="s2-cbody"><div class="s2-ct" id="pv-d3_titulo">Lançamento Instants</div><div class="s2-cd" id="pv-d3_desc">Nova ferramenta gera onda de publicações utilizando o mesmo visual.</div><div class="s2-icons">📷 🎵</div></div></div>
         </div>
       </div>
       <div class="s2-sep"></div>
       <div class="s2-mid">
         <div class="s2-panel">
           <div class="s2-ptitle">🔥 Formatos em alta</div>
-          <div class="s2-fi"><span style="color:#21521C;font-weight:700;font-size:6px;flex-shrink:0">↑</span><div><div class="s2-fn" id="pv-f1_nome">Lyric vídeo em movimento</div><div class="s2-fd" id="pv-f1_desc">Visão em POV de veiculo em movimento...</div></div></div>
-          <div class="s2-fi"><span style="color:#21521C;font-weight:700;font-size:6px;flex-shrink:0">↑</span><div><div class="s2-fn" id="pv-f2_nome">Interação com grid fotográfico</div><div class="s2-fd" id="pv-f2_desc">Pessoa interagindo com linhas...</div></div></div>
-          <div class="s2-fi"><span style="color:#21521C;font-weight:700;font-size:6px;flex-shrink:0">↑</span><div><div class="s2-fn" id="pv-f3_nome">Collage de foto com fundo em vídeo</div><div class="s2-fd" id="pv-f3_desc">Formato de collage...</div></div></div>
+          <div class="s2-fi"><span class="s2-fi-arrow">↑</span><div><div class="s2-fn" id="pv-f1_nome">Lyric vídeo em movimento</div><div class="s2-fd" id="pv-f1_desc">Visão em POV de veiculo em movimento enquanto passa pelo texto como se fossem placas na estrada</div></div></div>
+          <div class="s2-fi"><span class="s2-fi-arrow">↑</span><div><div class="s2-fn" id="pv-f2_nome">Interação com grid fotográfico</div><div class="s2-fd" id="pv-f2_desc">Pessoa interagindo com linhas das imagens em segundo plano, como se fosse um grid fotográfico</div></div></div>
+          <div class="s2-fi"><span class="s2-fi-arrow">↑</span><div><div class="s2-fn" id="pv-f3_nome">Collage de foto com fundo em vídeo</div><div class="s2-fd" id="pv-f3_desc">Formato de collage com foto de primeiro plano e vídeo de segundo plano</div></div></div>
         </div>
         <div class="s2-panel">
           <div class="s2-ptitle">🎵 Sons & áudios virais</div>
-          <div class="s2-ar"><div><div class="s2-at" id="pv-a1_titulo">Nisso daqui eu sou bom/ #1</div><div class="s2-ab" id="pv-a1_artista">DailyFariaZ • Audio original</div></div><div class="s2-au" id="pv-a1_usos">+158K usos</div></div>
-          <div class="s2-ar"><div><div class="s2-at" id="pv-a2_titulo">Salvador do Piano / #2</div><div class="s2-ab" id="pv-a2_artista">Elyashik • Audio original</div></div><div class="s2-au" id="pv-a2_usos">+269K usos</div></div>
-          <div class="s2-ar"><div><div class="s2-at" id="pv-a3_titulo">Alô Belém do Pará / #3</div><div class="s2-ab" id="pv-a3_artista">Joelma • Audio original</div></div><div class="s2-au" id="pv-a3_usos">+95K usos</div></div>
+          <div class="s2-ar"><div class="s2-ar-l"><span class="s2-ar-ic">♫</span><div><div class="s2-at" id="pv-a1_titulo">Nisso daqui eu sou bom/ #1</div><div class="s2-ab" id="pv-a1_artista">DailyFariaZ • Audio original</div></div></div><div class="s2-au" id="pv-a1_usos">+158K usos</div></div>
+          <div class="s2-ar"><div class="s2-ar-l"><span class="s2-ar-ic">♫</span><div><div class="s2-at" id="pv-a2_titulo">Salvador do Piano / #2</div><div class="s2-ab" id="pv-a2_artista">Elyashik • Audio original</div></div></div><div class="s2-au" id="pv-a2_usos">+269K usos</div></div>
+          <div class="s2-ar"><div class="s2-ar-l"><span class="s2-ar-ic">♫</span><div><div class="s2-at" id="pv-a3_titulo">Alô Belém do Pará / #3</div><div class="s2-ab" id="pv-a3_artista">Joelma • Audio original</div></div></div><div class="s2-au" id="pv-a3_usos">+95K usos</div></div>
         </div>
         <div class="s2-panel">
           <div class="s2-ptitle"># Temas quentes</div>
           <div class="s2-tg">
-            <div class="s2-tr"><span class="s2-tn" id="pv-t1_nome">Copa</span><span class="s2-tv" id="pv-t1_val">+184%</span></div>
-            <div class="s2-tr"><span class="s2-tn" id="pv-t2_nome">Locking in</span><span class="s2-tv" id="pv-t2_val">+126%</span></div>
-            <div class="s2-tr"><span class="s2-tn" id="pv-t3_nome">Michael Jackson</span><span class="s2-tv" id="pv-t3_val">+400%</span></div>
-            <div class="s2-tr"><span class="s2-tn" id="pv-t4_nome">Quem ama cuida</span><span class="s2-tv badge" id="pv-t4_val">#1 no X</span></div>
-            <div class="s2-tr"><span class="s2-tn" id="pv-t5_nome">Festa Junina</span><span class="s2-tv" id="pv-t5_val">+700%</span></div>
-            <div class="s2-tr"><span class="s2-tn" id="pv-t6_nome">Maio Laranja</span><span class="s2-tv" id="pv-t6_val">+100%</span></div>
+            <div class="s2-tr"><div class="s2-tr-l"><span class="s2-tn" id="pv-t1_nome">Copa</span></div><div style="display:flex;align-items:center;gap:2px"><span class="s2-ti">↑</span><span class="s2-tv" id="pv-t1_val">+184%</span></div></div>
+            <div class="s2-tr"><div class="s2-tr-l"><span class="s2-tn" id="pv-t2_nome">Locking in</span></div><div style="display:flex;align-items:center;gap:2px"><span class="s2-ti">↑</span><span class="s2-tv" id="pv-t2_val">+126%</span></div></div>
+            <div class="s2-tr"><div class="s2-tr-l"><span class="s2-tn" id="pv-t3_nome">Michael Jackson</span></div><div style="display:flex;align-items:center;gap:2px"><span class="s2-ti">↑</span><span class="s2-tv" id="pv-t3_val">+400%</span></div></div>
+            <div class="s2-tr"><div class="s2-tr-l"><span class="s2-tn" id="pv-t4_nome">Quem ama cuida</span></div><div style="display:flex;align-items:center;gap:2px"><span class="s2-ti">↑</span><span class="s2-tv badge" id="pv-t4_val">#1 no X</span></div></div>
+            <div class="s2-tr"><div class="s2-tr-l"><span class="s2-tn" id="pv-t5_nome">Festa Junina</span></div><div style="display:flex;align-items:center;gap:2px"><span class="s2-ti">↑</span><span class="s2-tv" id="pv-t5_val">+700%</span></div></div>
+            <div class="s2-tr"><div class="s2-tr-l"><span class="s2-tn" id="pv-t6_nome">Maio Laranja</span></div><div style="display:flex;align-items:center;gap:2px"><span class="s2-ti">↑</span><span class="s2-tv" id="pv-t6_val">+100%</span></div></div>
           </div>
         </div>
         <div class="s2-panel">
           <div class="s2-ptitle">📢 Plataformas · novidades & algoritmo</div>
-          <div class="s2-ps">📷 Atualização ou feature lançada</div>
-          <div class="s2-pi" id="pv-p1">Instagram está priorizando trends...</div>
+          <div class="s2-ps"><span>📷</span> Atualização ou feature lançada</div>
+          <div class="s2-pi" id="pv-p1">Instagram está priorizando trends de conteúdos originais, contanto que esse não seja o único foco do perfil</div>
           <div class="s2-pi" id="pv-p2">Lançamento do Instants</div>
-          <div class="s2-pi" id="pv-p3">Múltiplas legendas...</div>
+          <div class="s2-pi" id="pv-p3">Múltiplas legendas: agora é possível adicionar legenda em diferentes cards do carrossel</div>
         </div>
       </div>
       <div class="s2-footer">
