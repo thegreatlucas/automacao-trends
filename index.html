@@ -520,13 +520,13 @@ function upd(){
   }
 }
 
-function sp(slide, x,y,w,h, fill, line=null){
+function sp(pptx, slide, x,y,w,h, fill, line=null){
   const o={x,y,w,h,fill:{type:'solid',color:fill},line:{width:0}};
   if(line) o.line={width:1,color:line};
-  slide.addShape(window.pptxgen.ShapeType.rect, o);
+  slide.addShape(pptx.ShapeType.rect, o);
 }
-function sep(slide, x,y,w){
-  sp(slide, x,y,w,0.015, 'E5E7EB', '333333');
+function sep(pptx, slide, x,y,w){
+  sp(pptx, slide, x,y,w,0.015, 'E5E7EB', '333333');
 }
 function tx(slide, x,y,w,h, text, opts={}){
   slide.addText(text,[{...opts}],{x,y,w,h,
@@ -578,7 +578,7 @@ async function gerarPPTX(){
     s2.addText('Semana de referência',{x:C.s2_reflabel[0],y:C.s2_reflabel[1],w:C.s2_reflabel[2],h:C.s2_reflabel[3],fontFace:'JD Sans Pro Book',fontSize:8,color:'94A3B8',align:'right'});
     s2.addText(v('data'),{x:C.s2_refval[0],y:C.s2_refval[1],w:C.s2_refval[2],h:C.s2_refval[3],fontFace:'JD Sans Pro Book',fontSize:14,bold:true,color:'0F172A',align:'right'});
     s2.addText('Curadoria: equipe de conteúdo',{x:C.s2_cur[0],y:C.s2_cur[1],w:C.s2_cur[2],h:C.s2_cur[3],fontFace:'JD Sans Pro Book',fontSize:8,color:'94A3B8',align:'right',italic:true});
-    sep(s2, ...C.s2_sep1);
+    sep(pptx, s2, ...C.s2_sep1);
 
     // Destaques label
     img(s2, ASSETS.icon_fire, ...C.icon_fire1);
@@ -591,23 +591,23 @@ async function gerarPPTX(){
       {card:'card3',num:'num3',line:'line3',title:'title3',desc:'desc3',ig:'ig3',tt:'tt3',tk:'d3_titulo',dk:'d3_desc'},
     ];
     cards.forEach(({card,num,line,title,desc,ig,tt,tk,dk},i)=>{
-      sp(s2,...C[card],'F8FAFC');
+      sp(pptx, s2,...C[card],'F8FAFC');
       // Número grande
       s2.addText(`0${i+1}`,{x:C[num][0],y:C[num][1],w:C[num][2],h:C[num][3],fontFace:'JD Sans Pro Book',fontSize:40,bold:true,color:'21521C',valign:'middle'});
-      sp(s2,...C[line],'000000');
+      sp(pptx, s2,...C[line],'000000');
       s2.addText(v(tk),{x:C[title][0],y:C[title][1],w:C[title][2],h:C[title][3],fontFace:'JD Sans Pro Book',fontSize:12,bold:true,color:'0F172A'});
       s2.addText(v(dk),{x:C[desc][0],y:C[desc][1],w:C[desc][2],h:C[desc][3],fontFace:'JD Sans Pro Book',fontSize:9,color:'475569',wrap:true});
       img(s2, ASSETS.icon_instagram, ...C[ig]);
       img(s2, ASSETS.icon_tiktok,   ...C[tt]);
     });
 
-    sep(s2,...C.sep2);
+    sep(pptx, s2,...C.sep2);
 
     // Formatos
-    sp(s2,...C.panel_fmt,'FFFFFF');
+    sp(pptx, s2,...C.panel_fmt,'FFFFFF');
     img(s2, ASSETS.icon_fire, ...C.icon_fire2);
     s2.addText('Formatos em alta',{x:C.fmt_title[0],y:C.fmt_title[1],w:C.fmt_title[2],h:C.fmt_title[3],fontFace:'JD Sans Pro Book',fontSize:12,bold:true,color:'0F172A'});
-    sep(s2,...C.sep_fmt);
+    sep(pptx, s2,...C.sep_fmt);
     ['1','2','3'].forEach(n=>{
       img(s2, ASSETS.icon_arrow_up, ...C[`arr${n}`]);
       s2.addText(v(`f${n}_nome`),{x:C[`f${n}_nome`][0],y:C[`f${n}_nome`][1],w:C[`f${n}_nome`][2],h:C[`f${n}_nome`][3],fontFace:'JD Sans Pro Book',fontSize:10,bold:true,color:'0F172A'});
@@ -615,10 +615,10 @@ async function gerarPPTX(){
     });
 
     // Áudios
-    sp(s2,...C.panel_aud,'FFFFFF');
+    sp(pptx, s2,...C.panel_aud,'FFFFFF');
     img(s2, ASSETS.icon_music, ...C.icon_mus1);
     s2.addText('Sons & áudios virais',{x:C.aud_title[0],y:C.aud_title[1],w:C.aud_title[2],h:C.aud_title[3],fontFace:'JD Sans Pro Book',fontSize:12,bold:true,color:'0F172A'});
-    sep(s2,...C.sep_aud);
+    sep(pptx, s2,...C.sep_aud);
     [{n:'1',ic:'ic_mus_a1',t:'a1_titulo',a:'a1_artista',u:'a1_usos'},
      {n:'2',ic:'ic_mus_a2',t:'a2_titulo',a:'a2_artista',u:'a2_usos'},
      {n:'3',ic:'ic_mus_a3',t:'a3_titulo',a:'a3_artista',u:'a3_usos'}].forEach(({n,ic,t,a,u})=>{
@@ -629,12 +629,12 @@ async function gerarPPTX(){
     });
 
     // Temas
-    sp(s2,...C.panel_tem,'FFFFFF');
+    sp(pptx, s2,...C.panel_tem,'FFFFFF');
     img(s2, ASSETS.icon_hashtag, ...C.icon_hash);
     s2.addText('Temas quentes',{x:C.tem_title[0],y:C.tem_title[1],w:C.tem_title[2],h:C.tem_title[3],fontFace:'JD Sans Pro Book',fontSize:12,bold:true,color:'0F172A'});
-    sep(s2,...C.sep_tem);
+    sep(pptx, s2,...C.sep_tem);
     [1,2,3,4,5,6].forEach(n=>{
-      sp(s2,...C[`tc${n}`],'F1F5F9');
+      sp(pptx, s2,...C[`tc${n}`],'F1F5F9');
       s2.addText(v(`t${n}_nome`),{x:C[`tn${n}`][0],y:C[`tn${n}`][1],w:C[`tn${n}`][2],h:C[`tn${n}`][3],fontFace:'JD Sans Pro Book',fontSize:9,bold:true,color:'1E1B4B'});
       img(s2, ASSETS.icon_trending, ...C[`ti${n}`]);
       const val=v(`t${n}_val`);
@@ -643,20 +643,20 @@ async function gerarPPTX(){
     });
 
     // Plataformas
-    sp(s2,...C.panel_plat,'FFFFFF');
+    sp(pptx, s2,...C.panel_plat,'FFFFFF');
     img(s2, ASSETS.icon_megaphone, ...C.icon_meg);
     s2.addText('Plataformas  •  novidades & algoritmo',{x:C.plat_title[0],y:C.plat_title[1],w:C.plat_title[2],h:C.plat_title[3],fontFace:'JD Sans Pro Book',fontSize:12,bold:true,color:'0F172A'});
-    sep(s2,...C.sep_plat);
+    sep(pptx, s2,...C.sep_plat);
     img(s2, ASSETS.icon_instagram, ...C.icon_ig_p);
     s2.addText('Atualização ou feature lançada',{x:C.plat_sub[0],y:C.plat_sub[1],w:C.plat_sub[2],h:C.plat_sub[3],fontFace:'JD Sans Pro Book',fontSize:10,bold:true,color:'0F172A'});
     s2.addText(`- ${v('p1')}\n- ${v('p2')}\n- ${v('p3')}`,{x:C.plat_txt[0],y:C.plat_txt[1],w:C.plat_txt[2],h:C.plat_txt[3],fontFace:'JD Sans Pro Book',fontSize:8,color:'737373',wrap:true});
 
     // Footer
-    sp(s2,...C.footer,'21521C');
+    sp(pptx, s2,...C.footer,'21521C');
     img(s2, ASSETS.icon_bulb, ...C.icon_bulb);
     s2.addText('OPORTUNIDADES',{x:C.fopp_lbl1[0],y:C.fopp_lbl1[1],w:C.fopp_lbl1[2],h:C.fopp_lbl1[3],fontFace:'JD Sans Pro Book',fontSize:9,bold:true,color:'BDCCBA'});
     s2.addText('PARA SUA MARCA',{x:C.fopp_lbl2[0],y:C.fopp_lbl2[1],w:C.fopp_lbl2[2],h:C.fopp_lbl2[3],fontFace:'JD Sans Pro Book',fontSize:9,bold:true,color:'FADF4B'});
-    sp(s2,...C.fline,'FFFFFF');
+    sp(pptx, s2,...C.fline,'FFFFFF');
     [{fn:'fn1',ft:'ft1',ok:'o1'},{fn:'fn2',ft:'ft2',ok:'o2'},{fn:'fn3',ft:'ft3',ok:'o3'}].forEach(({fn,ft,ok},i)=>{
       s2.addText(`0${i+1}`,{x:C[fn][0],y:C[fn][1],w:C[fn][2],h:C[fn][3],fontFace:'JD Sans Pro Book',fontSize:12,bold:true,color:'FADF4B'});
       s2.addText(v(ok),{x:C[ft][0],y:C[ft][1],w:C[ft][2],h:C[ft][3],fontFace:'JD Sans Pro Book',fontSize:9,color:'FFFFFF',wrap:true});
@@ -667,7 +667,7 @@ async function gerarPPTX(){
     const s3 = pptx.addSlide();
     img(s3, ASSETS.bg_slide3, 0, 0, 13.33, 7.5);
     s3.addText('OBRIGADO',{x:C.s3_txt[0],y:C.s3_txt[1],w:C.s3_txt[2],h:C.s3_txt[3],fontFace:'JD Sans Pro Book',fontSize:96,color:'FFFFFF',align:'left'});
-    sp(s3,...C.s3_line,'FFDE00');
+    sp(pptx, s3,...C.s3_line,'FFDE00');
 
     // Download
     const periodo = v('periodo').replace(/[/\s]/g,'_');
