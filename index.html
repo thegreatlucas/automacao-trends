@@ -135,7 +135,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
 .s1-tag{font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;color:var(--y);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
 .s1-sub{font-size:16px;color:#fff;margin-top:5px}
 /* S2 — fiel ao original */
-.s2{background:#f7f6f2;display:flex;flex-direction:column;padding:14px 22px 0;color:#0F172A;overflow:hidden;font-family:'Barlow',sans-serif}
+.s2{background:#f7f6f2;display:flex;flex-direction:column;padding:14px 22px 0;color:#0F172A;overflow:hidden;font-family:'Barlow',sans-serif;height:540px}
 .s2-hdr{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:7px;border-bottom:1.5px solid #E5E7EB;margin-bottom:8px}
 .s2-pre{font-size:5.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#21521C;margin-bottom:3px}
 .s2-htitle{font-size:18px;font-weight:700;color:#0F172A;line-height:1.1}
@@ -143,7 +143,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
 .s2-rl{font-size:5px;color:#94A3B8;display:block;letter-spacing:.08em}
 .s2-rv{font-size:11px;font-weight:700;color:#0F172A;display:block}
 .s2-rc{font-size:5px;color:#94A3B8;font-style:italic;display:block}
-.s2-body{flex:1;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+.s2-body{flex:1;display:flex;flex-direction:column;gap:4px;overflow:hidden;min-height:0}
 /* destaques */
 .s2-dlbl{display:flex;align-items:center;gap:4px;font-size:5.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#333;margin-bottom:4px}
 .s2-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:5px}
@@ -158,8 +158,8 @@ body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-
 /* separador */
 .s2-sep{height:1.5px;background:#E5E7EB;border-top:1px solid #333;flex-shrink:0}
 /* mid grid */
-.s2-mid{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1;min-height:0}
-.s2-panel{background:#fff;border:1px solid #E5E7EB;border-radius:2px;padding:6px 7px;overflow:hidden;display:flex;flex-direction:column}
+.s2-mid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:5px;flex:1;min-height:0;overflow:hidden}
+.s2-panel{background:#fff;border:1px solid #E5E7EB;border-radius:2px;padding:5px 6px;overflow:hidden;display:flex;flex-direction:column;min-height:0}
 .s2-ptitle{display:flex;align-items:center;gap:4px;font-size:7px;font-weight:700;color:#0F172A;padding-bottom:4px;border-bottom:1px solid #E5E7EB;margin-bottom:5px;flex-shrink:0}
 /* formatos */
 .s2-fi{display:flex;gap:4px;align-items:flex-start;margin-bottom:5px}
@@ -639,7 +639,7 @@ async function gerarPPTX(){
       img(s2, ASSETS.icon_trending, ...C[`ti${n}`]);
       const val=v(`t${n}_val`);
       const vc=val.startsWith('#')||val.toLowerCase().includes('no')?'AA0000':'16A34A';
-      s2.addText(val,{x:C[`tv${n}`][0],y:C[`tv${n}`][1],w:C[`tv${n}`][2],h:C[`tv${n}`][3],fontFace:'JD Sans Pro Book',fontSize:9,bold:true,color:vc,align:'right'});
+      s2.addText(val,{x:C[`tv${n}`][0]-0.15,y:C[`tv${n}`][1],w:0.7,h:C[`tv${n}`][3],fontFace:'JD Sans Pro Book',fontSize:9,bold:true,color:vc,align:'right',shrinkText:true});
     });
 
     // Plataformas
